@@ -15,7 +15,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    commentForm: function commentForm() {
+      return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./form */ "./resources/js/pages/posts/comments/form.vue"));
+    }
+  }
+});
 
 /***/ }),
 
@@ -66,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "I really look so good wearing these shades. Don't you think?",
         firstName: "Mark",
         lastName: "Zuckerberg",
-        avatar: "",
+        avatar: "/mark-avatar.jpeg",
         createdAt: "2020-01-27 06:30:49",
         updatedAt: "2020-01-27 06:30:49",
         isAdmin: false
@@ -92,18 +99,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    { staticClass: "border-t border-gray-500 py-5" },
+    [
+      _c("h1", [_vm._v("comments")]),
+      _vm._v(" "),
+      _c("comment-form", { staticClass: "mt-10" })
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "border-t border-gray-500 py-5" }, [
-      _c("h1", [_vm._v("comments")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -139,23 +146,25 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("li", { staticClass: "inline-block align-top ml-2" }, [
-              _c("p", [
+              _c("p", { staticClass: "font-bold" }, [
                 _vm._v(_vm._s(_vm.post.firstName + " " + _vm.post.lastName))
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "text-gray-600" }, [_vm._v("Yesterday")])
+              _c("p", { staticClass: "text-gray-600 text-sm" }, [
+                _vm._v("Yesterday")
+              ])
             ]),
             _vm._v(" "),
             _vm._m(0)
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "block mt-2" }, [
-          _c("p", [_vm._v(_vm._s(_vm.post.title))])
+        _c("li", { staticClass: "block py-4" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.post.title))])
         ])
       ]),
       _vm._v(" "),
-      _c("comments", { staticClass: "mt-5" })
+      _c("comments", { staticClass: "mt-4" })
     ],
     1
   )

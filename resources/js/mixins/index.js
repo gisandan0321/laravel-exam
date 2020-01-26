@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      defaultAvatar: '/user-placeholder.jpeg'
+      defaultAvatar: '/default-avatar.jpg'
     }
   },
   computed: {
