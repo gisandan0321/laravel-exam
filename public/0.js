@@ -15,6 +15,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   metaInfo: {
     title: "Comment System"
@@ -40,8 +42,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "p-2 sm:w-1/2 lg:w-2/5 text-center m-auto" },
-    [_c("router-view")],
+    { staticClass: "p-6 sm:w-2/3 lg:w-2/5 m-auto" },
+    [
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [_vm.isMounted ? _c("router-view") : _vm._e()],
+        1
+      )
+    ],
     1
   )
 }

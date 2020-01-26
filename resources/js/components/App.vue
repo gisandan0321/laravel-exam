@@ -1,6 +1,8 @@
 <template>
-  <section class="p-2 sm:w-1/2 lg:w-2/5 text-center m-auto">
-    <router-view></router-view>
+  <section class="p-6 sm:w-2/3 lg:w-2/5 m-auto">
+    <transition name="fade">
+      <router-view v-if="isMounted"></router-view>
+    </transition>
   </section>
 </template>
 

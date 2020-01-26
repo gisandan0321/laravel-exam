@@ -21962,9 +21962,15 @@ if(false) {}
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      defaultAvatar: '/user-placeholder.jpeg'
+    };
   },
-  computed: {}
+  computed: {
+    isMounted: function isMounted() {
+      return this.$store.state.viewer.isMounted;
+    }
+  }
 });
 
 /***/ }),
@@ -21996,7 +22002,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 router.beforeEach(function (to, from, next) {
   next();
 });
-router.afterEach(function (to, from) {// TODO implementation
+router.afterEach(function (to, from) {
+  _store__WEBPACK_IMPORTED_MODULE_3__["default"].state.viewer.isMounted = true;
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
@@ -22126,7 +22133,9 @@ webpackContext.id = "./resources/js/store/modules sync .*\\.js$";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
-  state: {},
+  state: {
+    isMounted: false
+  },
   getters: {},
   mutations: {},
   actions: {}

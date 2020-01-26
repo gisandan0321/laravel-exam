@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-  // TODO implementation
+  store.state.viewer.isMounted = true;
 });
 
 export default router;
