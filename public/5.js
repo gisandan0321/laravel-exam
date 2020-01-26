@@ -27,6 +27,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     commentForm: function commentForm() {
@@ -110,10 +131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -154,18 +171,74 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "border-t border-gray-500 py-5" },
+    { staticClass: "py-5" },
     [
       _vm.comments.length === 0
         ? _c("h1", [_vm._v("No comments.")])
-        : _c("ul", [_c("li", [_vm._v(_vm._s(_vm.comments))])]),
+        : _vm._l(_vm.comments, function(comment, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "border-t border-gray-400 py-4" },
+              [
+                _c("div", { staticClass: "inline-block" }, [
+                  _c("img", {
+                    staticClass: "w-12 h-12 rounded-full",
+                    attrs: { src: _vm.defaultAvatar }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "inline-block align-top" }, [
+                  _c("div", { staticClass: "block" }, [
+                    _c("p", { staticClass: "inline-block font-bold" }, [
+                      _vm._v(_vm._s(comment.name))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "inline-block text-gray-600 text-sm ml-1"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("moment")(comment.created_at, "from", "now")
+                          )
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "block mt-1" }, [
+                    _c("p", { staticClass: "text-gray-700 text-md" }, [
+                      _vm._v(_vm._s(comment.message))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0, true)
+                ])
+              ]
+            )
+          }),
       _vm._v(" "),
       _c("comment-form", { staticClass: "mt-10" })
     ],
-    1
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "block mt-1" }, [
+      _c(
+        "p",
+        { staticClass: "inline-block text-blue-500 text-sm cursor-pointer" },
+        [_vm._v("Reply")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -192,34 +265,32 @@ var render = function() {
     [
       _c("ul", [
         _c("li", { staticClass: "block" }, [
-          _c("ul", [
-            _c("li", { staticClass: "inline-block" }, [
-              _c("img", {
-                staticClass: "w-12 h-12 rounded-full",
-                attrs: { src: _vm.post.avatar || _vm.defaultAvatar }
-              })
+          _c("img", {
+            staticClass: "inline-block w-12 h-12 rounded-full",
+            attrs: { src: _vm.post.avatar || _vm.defaultAvatar }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "inline-block align-top ml-2" }, [
+            _c("p", { staticClass: "font-bold" }, [
+              _vm._v(_vm._s(_vm.post.firstName + " " + _vm.post.lastName))
             ]),
             _vm._v(" "),
-            _c("li", { staticClass: "inline-block align-top ml-2" }, [
-              _c("p", { staticClass: "font-bold" }, [
-                _vm._v(_vm._s(_vm.post.firstName + " " + _vm.post.lastName))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-gray-600 text-sm" }, [
-                _vm._v("Yesterday")
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
+            _c("p", { staticClass: "text-gray-600 text-sm" }, [
+              _vm._v("Yesterday")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "block py-4" }, [
-          _c("h1", [_vm._v(_vm._s(_vm.post.title))])
+          _c("h1", { staticClass: "text-gray-700" }, [
+            _vm._v(_vm._s(_vm.post.title))
+          ])
         ])
       ]),
       _vm._v(" "),
-      _c("comments", { staticClass: "mt-4" })
+      _c("comments")
     ],
     1
   )
@@ -229,7 +300,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "inline-block align-top float-right" }, [
+    return _c("div", { staticClass: "inline-block align-top float-right" }, [
       _c("i", { staticClass: "fa fa-ellipsis-h cursor-pointer" })
     ])
   }

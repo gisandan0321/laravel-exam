@@ -17,7 +17,7 @@ class CommentController extends Controller
   public function index()
   {
     return response()->json([
-      'comments' => Comment::all()->sortBy('date_created')
+      'comments' => Comment::orderByDesc('created_at')->get()
     ]);
   }
 
@@ -31,7 +31,7 @@ class CommentController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|string|max:50',
-      'message' => 'required'
+      'message' => 'required|string'
     ]);
 
     if ($validator->fails()) {

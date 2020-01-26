@@ -97,14 +97,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -197,6 +189,7 @@ var render = function() {
     _c(
       "form",
       {
+        staticClass: "lg:w-2/3",
         attrs: { novalidate: "" },
         on: {
           submit: function($event) {
@@ -206,128 +199,120 @@ var render = function() {
         }
       },
       [
-        _c("ul", [
-          _vm._m(0),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "block mt-4" }, [
+          _vm._m(1),
           _vm._v(" "),
-          _c("li", { staticClass: "block mt-3" }, [
-            _c("ul", [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("li", { staticClass: "block" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.comment.name,
-                      expression: "comment.name"
-                    }
-                  ],
-                  class: [
-                    "sm:w-1/2 lg:w-1/2 appearance-none bg-white border border-gray-400 rounded p-1 leading-tight focus:outline-none focus:border-gray-500",
-                    {
-                      "border-red-500 focus:border-red-500":
-                        _vm.validated && _vm.comment.name === ""
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    id: "name",
-                    placeholder: "John Doe",
-                    minlength: "50",
-                    autofocus: "",
-                    required: ""
+          _c("div", { staticClass: "block" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.comment.name,
+                  expression: "comment.name"
+                }
+              ],
+              class: [
+                "sm:w-1/2 lg:w-1/2 appearance-none bg-white border border-gray-400 rounded p-2 leading-tight focus:outline-none focus:border-gray-500",
+                {
+                  "border-red-500 focus:border-red-500":
+                    _vm.validated && _vm.comment.name === ""
+                }
+              ],
+              attrs: {
+                type: "text",
+                id: "name",
+                placeholder: "John Doe",
+                minlength: "50",
+                autofocus: "",
+                required: ""
+              },
+              domProps: { value: _vm.comment.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.comment, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "block" }, [
+            _vm.validated && _vm.comment.name === ""
+              ? _c("p", { staticClass: "text-red-500 text-xs" }, [
+                  _vm._v("This field is required.")
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "block mt-4" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "block" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.comment.message,
+                  expression: "comment.message"
+                }
+              ],
+              class: [
+                "w-full h-24 appearance-none bg-white border border-gray-400 rounded p-2 leading-tight focus:outline-none focus:border-gray-500",
+                {
+                  "border-red-500 focus:border-red-500":
+                    _vm.validated && _vm.comment.message === ""
+                }
+              ],
+              attrs: { id: "message", placeholder: "Your comment here..." },
+              domProps: { value: _vm.comment.message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.comment, "message", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "block" }, [
+            _vm.validated && _vm.comment.message === ""
+              ? _c("p", { staticClass: "text-red-500 text-xs" }, [
+                  _vm._v("This field is required.")
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", { staticClass: "block mt-4" }, [
+            _vm.isProcessing
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-teal-500 p-2 text-white text-sm rounded float-right cursor-not-allowed",
+                    attrs: { type: "submit" }
                   },
-                  domProps: { value: _vm.comment.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.comment, "name", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "block" }, [
-                _vm.validated && _vm.comment.name === ""
-                  ? _c("p", { staticClass: "text-red-500 text-xs" }, [
-                      _vm._v("This field is required.")
-                    ])
-                  : _vm._e()
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "block mt-3" }, [
-            _c("ul", [
-              _vm._m(2),
-              _vm._v(" "),
-              _c("li", { staticClass: "block" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.comment.message,
-                      expression: "comment.message"
-                    }
-                  ],
-                  class: [
-                    "w-full h-24 appearance-none bg-white border border-gray-400 rounded p-1 leading-tight focus:outline-none focus:border-gray-500",
-                    {
-                      "border-red-500 focus:border-red-500":
-                        _vm.validated && _vm.comment.message === ""
-                    }
-                  ],
-                  attrs: { id: "message", placeholder: "Your comment here..." },
-                  domProps: { value: _vm.comment.message },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.comment, "message", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "block" }, [
-                _vm.validated && _vm.comment.message === ""
-                  ? _c("p", { staticClass: "text-red-500 text-xs" }, [
-                      _vm._v("This field is required.")
-                    ])
-                  : _vm._e()
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("ul", [
-              _c("li", { staticClass: "block mt-3" }, [
-                _vm.isProcessing
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "bg-teal-500 p-2 text-white text-sm rounded float-right cursor-not-allowed",
-                        attrs: { type: "submit" }
-                      },
-                      [_c("i", { staticClass: "fa fa-spinner fa-spin" })]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass:
-                          "bg-teal-500 p-2 text-white text-sm rounded float-right",
-                        attrs: { type: "submit" }
-                      },
-                      [_vm._v("Post")]
-                    )
-              ])
-            ])
+                  [_c("i", { staticClass: "fa fa-spinner fa-spin" })]
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-teal-500 p-2 text-white text-sm rounded float-right",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Post")]
+                )
           ])
         ])
       ]
@@ -339,7 +324,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "block" }, [
+    return _c("div", { staticClass: "block" }, [
       _c("h1", { staticClass: "text-gray-700 text-2xl" }, [
         _vm._v("Leave a Comment")
       ])
@@ -349,12 +334,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "block" }, [
+    return _c("div", { staticClass: "block" }, [
       _c(
         "label",
-        { staticClass: "text-sm text-gray-600", attrs: { for: "name" } },
+        { staticClass: "text-md text-gray-600", attrs: { for: "name" } },
         [
-          _vm._v("\n              Name\n              "),
+          _vm._v("\n          Name\n          "),
           _c("span", { staticClass: "text-red-500" }, [_vm._v("*")])
         ]
       )
@@ -364,12 +349,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "block" }, [
+    return _c("div", { staticClass: "block" }, [
       _c(
         "label",
-        { staticClass: "text-sm text-gray-600", attrs: { for: "message" } },
+        { staticClass: "text-md text-gray-600", attrs: { for: "message" } },
         [
-          _vm._v("\n              Comment\n              "),
+          _vm._v("\n          Comment\n          "),
           _c("span", { staticClass: "text-red-500" }, [_vm._v("*")])
         ]
       )

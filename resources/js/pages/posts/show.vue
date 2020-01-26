@@ -2,24 +2,20 @@
   <section>
     <ul>
       <li class="block">
-        <ul>
-          <li class="inline-block">
-            <img :src="post.avatar || defaultAvatar" class="w-12 h-12 rounded-full" />
-          </li>
-          <li class="inline-block align-top ml-2">
-            <p class="font-bold">{{ `${post.firstName} ${post.lastName}` }}</p>
-            <p class="text-gray-600 text-sm">Yesterday</p>
-          </li>
-          <li class="inline-block align-top float-right">
-            <i class="fa fa-ellipsis-h cursor-pointer"></i>
-          </li>
-        </ul>
+        <img :src="post.avatar || defaultAvatar" class="inline-block w-12 h-12 rounded-full" />
+        <div class="inline-block align-top ml-2">
+          <p class="font-bold">{{ `${post.firstName} ${post.lastName}` }}</p>
+          <p class="text-gray-600 text-sm">Yesterday</p>
+        </div>
+        <div class="inline-block align-top float-right">
+          <i class="fa fa-ellipsis-h cursor-pointer"></i>
+        </div>
       </li>
       <li class="block py-4">
-        <h1>{{ post.title }}</h1>
+        <h1 class="text-gray-700">{{ post.title }}</h1>
       </li>
     </ul>
-    <comments class="mt-4"></comments>
+    <comments></comments>
   </section>
 </template>
 

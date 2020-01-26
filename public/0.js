@@ -42,7 +42,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "p-6 sm:w-3/4 lg:w-2/5 m-auto" },
+    { staticClass: "p-6 sm:w-3/4 lg:w-3/5 m-auto" },
     [
       _c(
         "transition",
