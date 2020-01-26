@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form class="lg:w-2/3" @submit.prevent="handleSubmit" novalidate>
+    <form class="lg:w-2/3 p-2 rounded" @submit.prevent="handleSubmit" novalidate>
       <div class="block">
         <h1 class="text-gray-700 text-2xl">Leave a Comment</h1>
       </div>
@@ -69,7 +69,7 @@
           </button>
           <button
             type="submit"
-            class="bg-teal-500 p-2 text-white text-sm rounded float-right"
+            class="bg-teal-500 p-2 px-5 text-white text-sm rounded"
             v-else
           >Post</button>
         </div>

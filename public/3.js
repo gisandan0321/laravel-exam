@@ -189,7 +189,7 @@ var render = function() {
     _c(
       "form",
       {
-        staticClass: "lg:w-2/3",
+        staticClass: "lg:w-2/3 p-2 rounded",
         attrs: { novalidate: "" },
         on: {
           submit: function($event) {
@@ -308,7 +308,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "bg-teal-500 p-2 text-white text-sm rounded float-right",
+                      "bg-teal-500 p-2 px-5 text-white text-sm rounded",
                     attrs: { type: "submit" }
                   },
                   [_vm._v("Post")]
