@@ -23,6 +23,7 @@
                 ]"
                 v-model="comment.name"
                 placeholder="John Doe"
+                minlength="50"
                 autofocus
                 required
               />
