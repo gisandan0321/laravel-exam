@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Kulim+Park&display=swap');
+@import "~font-awesome/css/font-awesome.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Kulim Park', sans-serif;
+}
+    
+.bg-primary {
+  background-color: rgb(14, 30, 37, 0.86);
+}
+    
+.bg-primary-light {
+  background-color: rgb(14, 30, 37, 0.45);
+}
+    
+#nprogress .bar {
+  background: #38b2ac !important;
+}
+    
+#nprogress .spinner-icon {
+  border-top-color: #38b2ac !important;
+  border-left-color: #38b2ac !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to 
+/* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to 
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
