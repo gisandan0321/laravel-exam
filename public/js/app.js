@@ -22021,7 +22021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ([{
   path: '/',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
   },
   name: 'postDetails'
 }, {
