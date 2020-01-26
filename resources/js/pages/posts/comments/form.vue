@@ -39,26 +39,26 @@
         <li class="block mt-3">
           <ul>
             <li class="block">
-              <label for="content" class="text-sm text-gray-600">
+              <label for="message" class="text-sm text-gray-600">
                 Comment
                 <span class="text-red-500">*</span>
               </label>
             </li>
             <li class="block">
               <textarea
-                id="content"
+                id="message"
                 :class="[
                   'w-full h-24 appearance-none bg-white border border-gray-400 rounded p-1 leading-tight focus:outline-none focus:border-gray-500',
-                  {'border-red-500 focus:border-red-500' : validated && comment.content === ''}
+                  {'border-red-500 focus:border-red-500' : validated && comment.message === ''}
                 ]"
-                v-model="comment.content"
+                v-model="comment.message"
                 placeholder="Your comment here..."
               ></textarea>
             </li>
             <li class="block">
               <p
                 class="text-red-500 text-xs"
-                v-if="validated && comment.content === ''"
+                v-if="validated && comment.message === ''"
               >This field is required.</p>
             </li>
           </ul>
@@ -70,7 +70,9 @@
                 type="submit"
                 class="bg-teal-500 p-2 text-white text-sm rounded float-right cursor-not-allowed"
                 v-if="isProcessing"
-              ><i class="fa fa-spinner fa-spin"></i></button>
+              >
+                <i class="fa fa-spinner fa-spin"></i>
+              </button>
               <button
                 type="submit"
                 class="bg-teal-500 p-2 text-white text-sm rounded float-right"
@@ -92,18 +94,31 @@ export default {
       isProcessing: false,
       comment: {
         name: "",
-        content: ""
+        message: ""
       }
     };
   },
   methods: {
     async handleSubmit() {
-      if (this.comment.name === "" || this.comment.content === "") {
+      if (this.comment.name === "" || this.comment.message === "") {
         this.validated = true;
         return;
       }
 
-      console.log(this.comment);
+      this.isProcessing = true;
+
+      const { data } = await this.$http.post("/comments/create", this.comment);
+
+      if (!data.success) {
+        return this.$toastr.e("", data.message);
+      }
+
+      this.validated = false;
+      this.comment.name = "";
+      this.comment.message = "";
+      this.isProcessing = false;
+      this.$toastr.s("", data.message);
+      this.$parent.fetchComments();
     }
   }
 };

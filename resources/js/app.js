@@ -1,6 +1,7 @@
 import './imports/style.css';
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
+import VueToastr from "vue-toastr";
 import mixins from './mixins';
 import router from './router';
 import store from './store';
@@ -9,6 +10,12 @@ import http from './http';
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.mixin(mixins);
+Vue.use(VueToastr, {
+  defaultTimeout: 3000,
+  defaultProgressBar: false,
+  defaultProgressBarValue: 0,
+  defaultPosition: "toast-top-right"
+});
 Vue.use(VueMeta, {
   refreshOnceOnNavigation: true
 });

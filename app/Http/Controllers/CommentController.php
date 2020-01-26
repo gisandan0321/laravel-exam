@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 use App\Comment;
 
 class CommentController extends Controller
@@ -28,6 +29,26 @@ class CommentController extends Controller
    */
   public function create(Request $request)
   {
-    // TODO implementation
+    $validator = Validator::make($request->all(), [
+      'name' => 'required|string|max:50',
+      'message' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+      return response()->json([
+        'success' => false,
+        'message' => $validator->errors()->first()
+      ]);
+    }
+
+    $comment = new Comment;
+    $comment->name = strip_tags($request->name);
+    $comment->message = strip_tags($request->message);
+    $comment->save();
+
+    return response()->json([
+      'success' => true,
+      'message' => trans('app.commentCreated')
+    ]);
   }
 }

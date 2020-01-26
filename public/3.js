@@ -103,6 +103,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -110,7 +112,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       isProcessing: false,
       comment: {
         name: "",
-        content: ""
+        message: ""
       }
     };
   },
@@ -119,11 +121,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _handleSubmit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _ref, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(this.comment.name === "" || this.comment.content === "")) {
+                if (!(this.comment.name === "" || this.comment.message === "")) {
                   _context.next = 3;
                   break;
                 }
@@ -132,9 +136,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return");
 
               case 3:
-                console.log(this.comment);
+                this.isProcessing = true;
+                _context.next = 6;
+                return this.$http.post("/comments/create", this.comment);
 
-              case 4:
+              case 6:
+                _ref = _context.sent;
+                data = _ref.data;
+
+                if (data.success) {
+                  _context.next = 10;
+                  break;
+                }
+
+                return _context.abrupt("return", this.$toastr.e("", data.message));
+
+              case 10:
+                this.validated = false;
+                this.comment.name = "";
+                this.comment.message = "";
+                this.isProcessing = false;
+                this.$toastr.s("", data.message);
+                this.$parent.fetchComments();
+
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -245,32 +270,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.comment.content,
-                      expression: "comment.content"
+                      value: _vm.comment.message,
+                      expression: "comment.message"
                     }
                   ],
                   class: [
                     "w-full h-24 appearance-none bg-white border border-gray-400 rounded p-1 leading-tight focus:outline-none focus:border-gray-500",
                     {
                       "border-red-500 focus:border-red-500":
-                        _vm.validated && _vm.comment.content === ""
+                        _vm.validated && _vm.comment.message === ""
                     }
                   ],
-                  attrs: { id: "content", placeholder: "Your comment here..." },
-                  domProps: { value: _vm.comment.content },
+                  attrs: { id: "message", placeholder: "Your comment here..." },
+                  domProps: { value: _vm.comment.message },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.comment, "content", $event.target.value)
+                      _vm.$set(_vm.comment, "message", $event.target.value)
                     }
                   }
                 })
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "block" }, [
-                _vm.validated && _vm.comment.content === ""
+                _vm.validated && _vm.comment.message === ""
                   ? _c("p", { staticClass: "text-red-500 text-xs" }, [
                       _vm._v("This field is required.")
                     ])
@@ -342,7 +367,7 @@ var staticRenderFns = [
     return _c("li", { staticClass: "block" }, [
       _c(
         "label",
-        { staticClass: "text-sm text-gray-600", attrs: { for: "content" } },
+        { staticClass: "text-sm text-gray-600", attrs: { for: "message" } },
         [
           _vm._v("\n              Comment\n              "),
           _c("span", { staticClass: "text-red-500" }, [_vm._v("*")])

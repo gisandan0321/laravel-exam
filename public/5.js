@@ -24,6 +24,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     commentForm: function commentForm() {
@@ -35,38 +38,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       comments: []
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _ref, data;
+  mounted: function mounted() {
+    this.fetchComments();
+  },
+  methods: {
+    fetchComments: function () {
+      var _fetchComments = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _ref, data;
 
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return this.$http.get('/comments');
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.$http.get("/comments");
 
-            case 2:
-              _ref = _context.sent;
-              data = _ref.data;
-              this.comments = data.comments;
+              case 2:
+                _ref = _context.sent;
+                data = _ref.data;
+                this.comments = data.comments;
 
-            case 5:
-            case "end":
-              return _context.stop();
+              case 5:
+              case "end":
+                return _context.stop();
+            }
           }
-        }
-      }, _callee, this);
-    }));
+        }, _callee, this);
+      }));
 
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
+      function fetchComments() {
+        return _fetchComments.apply(this, arguments);
+      }
 
-    return mounted;
-  }()
+      return fetchComments;
+    }()
+  }
 });
 
 /***/ }),
@@ -148,7 +156,9 @@ var render = function() {
     "section",
     { staticClass: "border-t border-gray-500 py-5" },
     [
-      _vm.comments.length === 0 ? _c("h1", [_vm._v("No comments.")]) : _vm._e(),
+      _vm.comments.length === 0
+        ? _c("h1", [_vm._v("No comments.")])
+        : _c("ul", [_c("li", [_vm._v(_vm._s(_vm.comments))])]),
       _vm._v(" "),
       _c("comment-form", { staticClass: "mt-10" })
     ],
