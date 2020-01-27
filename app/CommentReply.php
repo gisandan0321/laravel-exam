@@ -9,7 +9,8 @@ class CommentReply extends Model
   protected $table = 'comment_reply';
 
   protected $fillable = [
-    'comment_id', 'name', 'message'
+    'comment_id', 'comment_reply_id',
+    'name', 'message'
   ];
 
   /**
