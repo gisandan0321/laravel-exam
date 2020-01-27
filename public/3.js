@@ -95,7 +95,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   props: {
     commentId: {
       type: Number,
-      "default": 0
+      "default": null
+    },
+    commentReplyId: {
+      type: Number,
+      "default": null
     }
   },
   data: function data() {
@@ -103,7 +107,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       validated: false,
       isProcessing: false,
       comment: {
-        commentId: 0,
+        commentId: null,
+        commentReplyId: null,
         name: "",
         message: ""
       }
@@ -111,6 +116,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.comment.commentId = this.commentId;
+    this.comment.commentReplyId = this.commentReplyId;
   },
   methods: {
     handleSubmit: function () {

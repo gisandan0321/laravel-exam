@@ -24,11 +24,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Comment: function Comment() {
-      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../components/Comment */ "./resources/js/pages/posts/comments/components/Comment.vue"));
-    },
     Replies: function Replies() {
       return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../components/Replies */ "./resources/js/pages/posts/comments/components/Replies.vue"));
     },
@@ -44,6 +44,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      isFetchingData: false,
       data: []
     };
   },
@@ -85,19 +86,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                this.isFetchingData = true;
+                _context2.next = 3;
                 return this.$http.get("/comments/replies", {
                   params: {
                     commentId: this.commentId
                   }
                 });
 
-              case 2:
+              case 3:
                 _ref = _context2.sent;
                 data = _ref.data;
                 this.data = data.replies;
+                this.isFetchingData = false;
 
-              case 5:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -134,7 +137,11 @@ var render = function() {
   return _c(
     "section",
     [
-      _c("replies", { attrs: { data: _vm.data } }),
+      _vm.isFetchingData
+        ? _c("div", { staticClass: "block text-center text-xl pb-2" }, [
+            _c("i", { staticClass: "fa fa-spinner fa-spin" })
+          ])
+        : _c("replies", { attrs: { data: _vm.data } }),
       _vm._v(" "),
       _c("reply-form", {
         staticClass: "border-t border-gray-400 py-4",

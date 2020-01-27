@@ -24,16 +24,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Comment: function Comment() {
-      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./Comment */ "./resources/js/pages/posts/comments/components/Comment.vue"));
+    DataRow: function DataRow() {
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./DataRow */ "./resources/js/pages/posts/comments/components/DataRow.vue"));
+    },
+    SubReplies: function SubReplies() {
+      return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./SubReplies */ "./resources/js/pages/posts/comments/components/SubReplies.vue"));
     }
   },
   props: {
     data: {
       type: Array,
       "default": []
+    }
+  },
+  methods: {
+    loadReply: function loadReply(replyId) {
+      this.$store.dispatch("viewer/addLoadedReply", replyId);
     }
   }
 });
@@ -67,10 +79,13 @@ var render = function() {
               "div",
               { key: index },
               [
-                _c("comment", { staticClass: "py-4", attrs: { data: reply } }),
+                _c("data-row", { staticClass: "py-4", attrs: { data: reply } }),
                 _vm._v(" "),
                 _vm.$store.state.viewer.loadedReplies.includes(reply.id)
-                  ? _c("div", [_vm._v("has nested reply")])
+                  ? _c("sub-replies", {
+                      staticClass: "w-11/12 ml-auto",
+                      attrs: { "comment-reply-id": reply.id }
+                    })
                   : _c(
                       "p",
                       {

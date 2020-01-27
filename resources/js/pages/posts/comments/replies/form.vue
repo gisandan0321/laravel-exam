@@ -77,7 +77,11 @@ export default {
   props: {
     commentId: {
       type: Number,
-      default: 0
+      default: null
+    },
+    commentReplyId: {
+      type: Number,
+      default: null
     }
   },
   data() {
@@ -85,7 +89,8 @@ export default {
       validated: false,
       isProcessing: false,
       comment: {
-        commentId: 0,
+        commentId: null,
+        commentReplyId: null,
         name: "",
         message: ""
       }
@@ -93,6 +98,7 @@ export default {
   },
   mounted() {
     this.comment.commentId = this.commentId;
+    this.comment.commentReplyId = this.commentReplyId;
   },
   methods: {
     async handleSubmit() {

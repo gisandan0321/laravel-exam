@@ -1,5 +1,3 @@
-import axios from '../../http';
-
 export default {
   namespaced: true,
   state: {

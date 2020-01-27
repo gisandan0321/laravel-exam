@@ -2,7 +2,7 @@
   <section>
     <h1 class="text-center text-gray-500 pb-3" v-if="data.length === 0">No comments.</h1>
     <div v-for="(comment, index) in data" :key="index" v-else>
-      <comment class="py-4" :data="comment"></comment>
+      <data-row class="py-4" :data="comment"></data-row>
       <replies
         class="w-11/12 ml-auto"
         :comment-id="comment.id"
@@ -20,20 +20,15 @@
 <script>
 export default {
   components: {
-    Comment: () => import("./Comment"),
+    DataRow: () => import("./DataRow"),
     Replies: () => import("../replies")
-  },
-  data() {
-    return {
-      replies: []
-    };
   },
   props: {
     data: Array,
     default: []
   },
   methods: {
-    async loadComment(commentId) {
+    loadComment(commentId) {
       this.$store.dispatch("viewer/addLoadedComment", commentId);
     }
   }
