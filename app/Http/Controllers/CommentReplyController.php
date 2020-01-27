@@ -55,8 +55,12 @@ class CommentReplyController extends Controller
       ]);
     }
 
+    $replies = CommentReply::where('comment_reply_id', $request->commentReplyId)
+      ->orderBy('created_at')
+      ->get();
+
     return response()->json([
-      'replies' => CommentReply::where('comment_reply_id', $request->commentReplyId)->get()
+      'replies' => $replies
     ]);
   }
 

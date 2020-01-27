@@ -17,6 +17,6 @@ class Comment extends Model
    */
   public function replies()
   {
-    return $this->hasMany('App\CommentReply', 'comment_id');
+    return $this->hasMany('App\CommentReply', 'comment_id')->orderBy('created_at');
   }
 }
