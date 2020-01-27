@@ -1,9 +1,30 @@
+import axios from '../../http';
+
 export default {
   namespaced: true,
   state: {
-    isMounted: false
+    isMounted: false,
+    loadedComments: [],
+    loadedReplies: []
   },
-  getters: {},
-  mutations: {},
-  actions: {}
+  getters: {
+    loadedComments: state => state.loadedComments,
+    loadedReplies: state => state.loadedReplies
+  },
+  mutations: {
+    addLoadedComment(state, commentId) {
+      state.loadedComments.push(commentId);
+    },
+    addLoadedReply(state, commentId) {
+      state.loadedReplies.push(commentId);
+    }
+  },
+  actions: {
+    addLoadedComment({ commit }, commentId) {
+      commit('addLoadedComment', commentId);
+    },
+    addLoadedReply({ commit }, commentId) {
+      commit('addLoadedReply', commentId);
+    }
+  }
 }

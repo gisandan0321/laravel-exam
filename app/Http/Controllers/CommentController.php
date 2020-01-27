@@ -17,7 +17,7 @@ class CommentController extends Controller
   public function index()
   {
     return response()->json([
-      'comments' => Comment::orderBy('created_at')->get()
+      'comments' => Comment::all()->sortBy('date_created')
     ]);
   }
 

@@ -11,4 +11,12 @@ class Comment extends Model
   protected $fillable = [
     'name', 'message'
   ];
+
+  /**
+   * Get the replies for the post comment.
+   */
+  public function replies()
+  {
+    return $this->hasMany('App\CommentReply', 'comment_id');
+  }
 }

@@ -27646,7 +27646,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ([{
   path: '/',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
   },
   name: 'postDetails'
 }, {
@@ -27756,14 +27756,41 @@ webpackContext.id = "./resources/js/store/modules sync .*\\.js$";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../http */ "./resources/js/http/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: {
-    isMounted: false
+    isMounted: false,
+    loadedComments: [],
+    loadedReplies: []
   },
-  getters: {},
-  mutations: {},
-  actions: {}
+  getters: {
+    loadedComments: function loadedComments(state) {
+      return state.loadedComments;
+    },
+    loadedReplies: function loadedReplies(state) {
+      return state.loadedReplies;
+    }
+  },
+  mutations: {
+    addLoadedComment: function addLoadedComment(state, commentId) {
+      state.loadedComments.push(commentId);
+    },
+    addLoadedReply: function addLoadedReply(state, commentId) {
+      state.loadedReplies.push(commentId);
+    }
+  },
+  actions: {
+    addLoadedComment: function addLoadedComment(_ref, commentId) {
+      var commit = _ref.commit;
+      commit('addLoadedComment', commentId);
+    },
+    addLoadedReply: function addLoadedReply(_ref2, commentId) {
+      var commit = _ref2.commit;
+      commit('addLoadedReply', commentId);
+    }
+  }
 });
 
 /***/ }),

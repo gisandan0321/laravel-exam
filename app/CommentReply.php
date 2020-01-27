@@ -11,4 +11,12 @@ class CommentReply extends Model
   protected $fillable = [
     'comment_id', 'name', 'message'
   ];
+
+  /**
+   * Get the comment that owns the reply.
+   */
+  public function comment()
+  {
+    return $this->belongsTo('App\Comment');
+  }
 }

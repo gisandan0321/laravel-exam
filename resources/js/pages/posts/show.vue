@@ -1,30 +1,26 @@
 <template>
   <section>
-    <ul>
-      <li class="block">
-        <img :src="post.avatar || defaultAvatar" class="inline-block w-12 h-12 rounded-full" />
-        <div class="inline-block align-top ml-2">
-          <p class="font-bold">{{ `${post.firstName} ${post.lastName}` }}</p>
-          <p class="text-gray-600 text-sm">Yesterday</p>
-        </div>
-        <div class="inline-block align-top float-right">
-          <i class="fa fa-ellipsis-h cursor-pointer"></i>
-        </div>
-      </li>
-      <li class="block py-4">
-        <h1 class="text-gray-700">{{ post.title }}</h1>
-      </li>
-    </ul>
-    <comments></comments>
+    <div class="block">
+      <img :src="post.avatar || defaultAvatar" class="inline-block w-12 h-12 rounded-full" />
+      <div class="inline-block align-top ml-2">
+        <p class="font-bold">{{ `${post.firstName} ${post.lastName}` }}</p>
+        <p class="text-gray-600 text-sm">{{ post.createdAt | moment("from", "now") }}</p>
+      </div>
+      <div class="inline-block align-top float-right">
+        <i class="fa fa-ellipsis-h cursor-pointer"></i>
+      </div>
+    </div>
+    <div class="block py-5">
+      <h1 class="text-gray-700">{{ post.title }}</h1>
+    </div>
+    <comments class="block mt-4"></comments>
   </section>
 </template>
 
 <script>
-import Comments from "./comments";
-
 export default {
   components: {
-    Comments
+    Comments: () => import("./comments")
   },
   data() {
     return {
@@ -34,8 +30,8 @@ export default {
         firstName: "Mark",
         lastName: "Zuckerberg",
         avatar: "/mark-avatar.jpeg",
-        createdAt: "2020-01-27 06:30:49",
-        updatedAt: "2020-01-27 06:30:49",
+        createdAt: "2020-01-26 17:44:03",
+        updatedAt: "2020-01-26 17:44:03",
         isAdmin: false
       }
     };
