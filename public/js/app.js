@@ -27497,7 +27497,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_meta__WEBPACK_IMPORTED_MODULE
 });
 
 var App = function App() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./components/App */ "./resources/js/components/App.vue"));
+  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/App */ "./resources/js/components/App.vue"));
 };
 
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
@@ -27646,13 +27646,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ([{
   path: '/',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/posts/show */ "./resources/js/pages/posts/show.vue"));
   },
   name: 'postDetails'
 }, {
   path: '/page-not-found',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../components/Error404 */ "./resources/js/components/Error404.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../components/Error404 */ "./resources/js/components/Error404.vue"));
   },
   name: 'pageNotFound'
 }, {
