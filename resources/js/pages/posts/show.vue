@@ -3,16 +3,14 @@
     <div class="block">
       <img :src="post.avatar || defaultAvatar" class="inline-block w-12 h-12 rounded-full" />
       <div class="inline-block align-top ml-2">
-        <p class="font-bold">{{ `${post.firstName} ${post.lastName}` }}</p>
+        <p>{{ `${post.firstName} ${post.lastName}` }}</p>
         <p class="text-gray-600 text-sm">{{ post.createdAt | moment("from", "now") }}</p>
       </div>
       <div class="inline-block align-top float-right">
         <i class="fa fa-ellipsis-h cursor-pointer"></i>
       </div>
     </div>
-    <div class="block py-5">
-      <h1 class="text-gray-700">{{ post.title }}</h1>
-    </div>
+    <h1 class="block text-gray-700 py-5">{{ post.title }}</h1>
     <comments class="block mt-4"></comments>
   </section>
 </template>

@@ -28,18 +28,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    CommentLabel: function CommentLabel() {
+      return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./CommentsLabel */ "./resources/js/pages/posts/comments/components/CommentsLabel.vue"));
+    },
     DataRow: function DataRow() {
-      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./DataRow */ "./resources/js/pages/posts/comments/components/DataRow.vue"));
+      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./DataRow */ "./resources/js/pages/posts/comments/components/DataRow.vue"));
     },
     Replies: function Replies() {
-      return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../replies */ "./resources/js/pages/posts/comments/replies/index.vue"));
+      return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../replies */ "./resources/js/pages/posts/comments/replies/index.vue"));
     }
   },
   props: {
-    data: Array,
-    "default": []
+    data: {
+      type: Array,
+      "default": []
+    }
   },
   methods: {
     loadComment: function loadComment(commentId) {
@@ -68,42 +74,42 @@ var render = function() {
   return _c(
     "section",
     [
-      _vm.data.length === 0
-        ? _c("h1", { staticClass: "text-center text-gray-500 pb-3" }, [
-            _vm._v("No comments.")
-          ])
-        : _vm._l(_vm.data, function(comment, index) {
-            return _c(
-              "div",
-              { key: index },
-              [
-                _c("data-row", {
-                  staticClass: "py-4",
-                  attrs: { data: comment }
-                }),
-                _vm._v(" "),
-                _vm.$store.state.viewer.loadedComments.includes(comment.id)
-                  ? _c("replies", {
-                      staticClass: "w-11/12 ml-auto",
-                      attrs: { "comment-id": comment.id }
-                    })
-                  : _c(
-                      "p",
-                      {
-                        staticClass:
-                          "block text-center pb-3 mt-1 text-blue-500 text-sm font-bold cursor-pointer",
-                        on: {
-                          click: function($event) {
-                            return _vm.loadComment(comment.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Reply")]
-                    )
-              ],
-              1
-            )
-          })
+      _c("comment-label", {
+        attrs: { totalRecords: _vm.data.length, isPrimary: true }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.data, function(comment, index) {
+        return _c(
+          "div",
+          { key: index },
+          [
+            _c("data-row", { staticClass: "py-4", attrs: { data: comment } }),
+            _vm._v(" "),
+            _vm.$store.state.viewer.loadedComments.includes(comment.id)
+              ? _c("replies", {
+                  staticClass: "w-11/12 ml-auto",
+                  attrs: { commentId: comment.id }
+                })
+              : _c(
+                  "a",
+                  {
+                    staticClass:
+                      "block text-center pb-3 mt-1 text-blue-500 text-sm cursor-pointer",
+                    attrs: { href: "" },
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        $event.preventDefault()
+                        return _vm.loadComment(comment.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Reply")]
+                )
+          ],
+          1
+        )
+      })
     ],
     2
   )

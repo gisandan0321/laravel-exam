@@ -1,7 +1,7 @@
 <template>
   <section>
-    <comments :data="comments"></comments>
-    <comment-form class="border-t border-gray-400 py-5 mt-20"></comment-form>
+    <comments :data="data"></comments>
+    <comment-form class="border-t border-gray-400 py-5 mt-10"></comment-form>
   </section>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      comments: []
+      data: []
     };
   },
   mounted() {
@@ -22,7 +22,7 @@ export default {
   methods: {
     async fetchData() {
       const { data } = await this.$http.get("/comments");
-      this.comments = data.comments;
+      this.data = data.comments;
     }
   }
 };

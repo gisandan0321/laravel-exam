@@ -4,7 +4,7 @@
       <i class="fa fa-spinner fa-spin"></i>
     </div>
     <replies :data="data" v-else></replies>
-    <reply-form :comment-id="commentId" class="border-t border-gray-400 py-4"></reply-form>
+    <reply-form :commentId="commentId" class="border-t border-gray-400 py-4"></reply-form>
   </section>
 </template>
 
